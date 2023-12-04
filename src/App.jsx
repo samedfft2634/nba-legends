@@ -5,7 +5,7 @@ import CardContainer from './components/CardContainer';
 import './App.css'
 
 function App() {
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState(data);
   const handleChange =  (e) =>{
     let inputValue = e.target.value.toLowerCase().split(" ").join("");
     let filteredPlayers = data.filter((item) => {
