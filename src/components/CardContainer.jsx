@@ -1,7 +1,7 @@
 import PlayerCard from "./PlayerCard"
-import{ data } from '../helper/data'
 
-const CardContainer = () => {
+
+const CardContainer = ({data}) => {
   return (
     <div className="CardContainer">
         {data.map((player,index)=>(
