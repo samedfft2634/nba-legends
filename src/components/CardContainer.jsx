@@ -4,8 +4,8 @@ import{ data } from '../helper/data'
 const CardContainer = () => {
   return (
     <div className="CardContainer">
-        {data.map((player)=>(
-             <PlayerCard {...player}/>
+        {data.map((player,index)=>(
+             <PlayerCard {...player} key={index}/>
         ))}
        
     </div>

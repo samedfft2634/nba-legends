@@ -1,20 +1,31 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 const PlayerCard = ({ name, img, statistics }) => {
-    const [stat, setStat] = useState(false)
+    let [stat, setStat] = useState(false)
     const handleClick = () => {
         setStat(!stat)
     }
+    const handleMouseLeave = () => {
+        setTimeout(() => {
+          setStat(false);
+        }, 1000); 
+      };
+
+      useEffect(() => {
+        return () => {
+          clearTimeout();
+        };
+      }, []);
 	return (
-		<div className="PlayerCard" onClick={handleClick}>
+		<div className="PlayerCard" onClick={handleClick} onMouseLeave={handleMouseLeave}>
 			<div className="sides">
 				<div className="front">
-					<img src={img} alt="playerPhoto" style={{visibility:`${stat ? "hidden" : "visible" }`}}/>
+					<img  src={img} alt="playerPhoto" style={{visibility:`${stat ? "hidden" : "visible" }`}}/>
 				</div>
 				<div className="back">
 					<ul style={{display:`${stat ? "block" : "none"}`}}>
-						{statistics.map((stats) => (
-							<li>{stats}</li>
+						{statistics.map((stats,index) => (
+							<li key={index}>{stats}</li>
 						))}
 					</ul>
 				</div>
